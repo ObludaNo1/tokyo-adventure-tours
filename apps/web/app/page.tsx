@@ -75,7 +75,7 @@ export default function Home() {
       </section>
 
       {/* Just a wrapper for padding */}
-      <div className="p-4">
+      <div className="p-4 flex flex-col gap-24">
         <section className="w-full">
           <Header1>Explore what we offer</Header1>
           <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -89,8 +89,7 @@ export default function Home() {
         </section>
 
         <section className="w-full">
-          <Header1>About us</Header1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-24 mt-8 items-center justify-center">
             <div className="relative w-full aspect-square overflow-hidden rounded-lg">
               <Image
                 // TODO Why the fuck when I use the small version of this WebP image the image is rotated???
@@ -100,7 +99,7 @@ export default function Home() {
                 className="object-cover object-center circle-clip"
               />
             </div>
-            <div>
+            <div className="px-12 pt-0 pb-24">
               <Header1>
                 Who
                 <br />
