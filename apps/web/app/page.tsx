@@ -97,7 +97,7 @@ export default function Home() {
                 src="/images/about_us_00.webp"
                 alt="David, one of the tour guides, standing at the train station on the Izu peninsula."
                 fill
-                className="object-cover object-center"
+                className="object-cover object-center circle-clip"
               />
             </div>
             <div>

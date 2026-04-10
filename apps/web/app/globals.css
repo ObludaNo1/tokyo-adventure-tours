@@ -28,3 +28,7 @@ body {
 .octagon-clip {
   clip-path: polygon(50% 0%, 95% 5%, 100% 50%, 95% 95%, 50% 100%, 5% 95%, 0% 50%, 5% 5%);
 }
+ 
+ .circle-clip {
+   clip-path: circle(50% at 50% 50%);
+ }
