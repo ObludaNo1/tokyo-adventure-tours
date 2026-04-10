@@ -1,5 +1,5 @@
 export type ButtonType = "primary" | "secondary";
-export type ButtonSize = "small" | "medium" | "large";
+export type ButtonSize = "sm" | "md" | "lg";
 
 export type ButtonProps = {
   readonly type?: ButtonType;
@@ -14,16 +14,16 @@ const typeClasses: Record<ButtonType, string> = {
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  small: "px-8 py-3 text-lg",
-  medium: "px-14 py-4 text-xl",
-  large: "px-20 py-6 text-2xl",
+  sm: "px-8 py-3 text-lg",
+  md: "px-14 py-4 text-xl",
+  lg: "px-20 py-6 text-2xl",
 };
 
 export default function Button({
   children,
   onClick,
   type = "primary",
-  size = "medium",
+  size = "md",
 }: ButtonProps) {
   return (
     <button
