@@ -2,22 +2,32 @@ export type ButtonType = "primary" | "secondary";
 export type ButtonSize = "small" | "medium" | "large";
 
 export type ButtonProps = {
-  type?: ButtonType;
-  size?: ButtonSize;
-  onClick: () => void;
-  children: React.ReactNode;
+  readonly type?: ButtonType;
+  readonly size?: ButtonSize;
+  readonly onClick?: () => void;
+  readonly children?: React.ReactNode;
+};
+
+const typeClasses: Record<ButtonType, string> = {
+  primary: "bg-black text-white hover:bg-zinc-800",
+  secondary: "bg-zinc-200 text-black hover:bg-zinc-300",
+};
+
+const sizeClasses: Record<ButtonSize, string> = {
+  small: "px-8 py-3 text-lg",
+  medium: "px-14 py-4 text-xl",
+  large: "px-20 py-6 text-2xl",
 };
 
 export default function Button({
   children,
   onClick,
-}: Readonly<{
-  children: React.ReactNode;
-  onClick?: () => void;
-}>) {
+  type = "primary",
+  size = "medium",
+}: ButtonProps) {
   return (
     <button
-      className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+      className={`${sizeClasses[size]} ${typeClasses[type]} rounded-full transition-colors cursor-pointer`}
       onClick={onClick}
     >
       {children}
