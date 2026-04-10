@@ -18,7 +18,7 @@ function TourCard({
   link: string;
 }>) {
   return (
-    <div>
+    <article className="h-full flex flex-col rounded-lg bg-white">
       <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg">
         <Image
           src={`/${imageSrc}`}
@@ -27,10 +27,10 @@ function TourCard({
           className="object-cover object-center octagon-clip"
         />
       </div>
-      <div className="p-4">
+      <div className="p-4 flex flex-1 flex-col">
         <Header2>{name}</Header2>
         <Header3>{price}</Header3>
-        <p>
+        <p className="leading-7">
           {shortDescription.map((part) =>
             part.bold ? (
               <strong key={part.text}>{part.text}</strong>
@@ -39,11 +39,11 @@ function TourCard({
             ),
           )}
         </p>
-        <Link href={link}>
+        <Link href={link} className="mt-auto pt-4">
           <Button>Details</Button>
         </Link>
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -78,7 +78,7 @@ export default function Home() {
       <div className="p-4 flex flex-col gap-24">
         <section className="w-full">
           <Header1>Explore what we offer</Header1>
-          <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             <TourCard
               tour={firstTimeExplorerTour}
               link="tours/first-time-explorer"
