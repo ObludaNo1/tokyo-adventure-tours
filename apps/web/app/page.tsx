@@ -19,12 +19,12 @@ function TourCard({
 }>) {
   return (
     <div>
-      <div className="relative w-full aspect-video overflow-hidden rounded-lg">
+      <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg">
         <Image
           src={`/${imageSrc}`}
           alt={imageAlt}
           fill
-          className="object-cover object-center"
+          className="object-cover object-center octagon-clip"
         />
       </div>
       <div className="p-4">

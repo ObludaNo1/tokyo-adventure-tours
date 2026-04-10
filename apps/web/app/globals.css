@@ -24,3 +24,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.octagon-clip {
+  clip-path: polygon(50% 0%, 95% 5%, 100% 50%, 95% 95%, 50% 100%, 5% 95%, 0% 50%, 5% 5%);
+}
