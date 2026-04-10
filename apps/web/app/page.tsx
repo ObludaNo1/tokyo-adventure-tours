@@ -78,7 +78,7 @@ export default function Home() {
       <div className="p-4 flex flex-col gap-16">
         <section className="w-full">
           <Header1>Explore what we offer</Header1>
-          <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 lx:grid-cols-3 gap-8 items-stretch">
+          <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 items-stretch">
             <TourCard
               tour={firstTimeExplorerTour}
               link="tours/first-time-explorer"
