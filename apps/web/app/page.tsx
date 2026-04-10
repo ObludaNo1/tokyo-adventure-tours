@@ -87,6 +87,34 @@ export default function Home() {
             <TourCard tour={onsenAndNatureTour} link="tours/onsen-and-nature" />
           </div>
         </section>
+
+        <section className="w-full">
+          <Header1>About us</Header1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            <div className="relative w-full aspect-square overflow-hidden rounded-lg">
+              <Image
+                // TODO Why the fuck when I use the small version of this WebP image the image is rotated???
+                src="/images/about_us_00.webp"
+                alt="David, one of the tour guides, standing at the train station on the Izu peninsula."
+                fill
+                className="object-cover object-center"
+              />
+            </div>
+            <div>
+              <Header1>
+                Who
+                <br />
+                we are
+              </Header1>
+              <p>
+                Meet David and Ondřej. We are friends who moved to Japan to
+                explore this beautiful country and who are living here in Tokyo.
+                We love this country and want to share its most gorgeous spots
+                with you.
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
   );
