@@ -9,6 +9,7 @@ import {
   Tour,
 } from "@/data/tours";
 import Button from "@/components/button";
+import Contact from "@/components/contact";
 
 function TourCard({
   tour: { name, imageSrc, imageAlt, price, shortDescription },
@@ -124,6 +125,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <Contact />
       </div>
     </main>
   );
