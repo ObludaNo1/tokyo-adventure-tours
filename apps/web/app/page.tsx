@@ -6,6 +6,7 @@ import {
   advancedTour,
   firstTimeExplorerTour,
   onsenAndNatureTour,
+  parseTourText,
   Tour,
 } from "@/data/tours";
 import Button from "@/components/button";
@@ -32,11 +33,11 @@ function TourCard({
         <Header2>{name}</Header2>
         <Header3>{price}</Header3>
         <p className="leading-7">
-          {shortDescription.map((part) =>
+          {parseTourText(shortDescription).map((part) =>
             part.bold ? (
               <strong key={part.text}>{part.text}</strong>
             ) : (
-              <span key={part.text}> {part.text} </span>
+              <span key={part.text}>{part.text}</span>
             ),
           )}
         </p>
