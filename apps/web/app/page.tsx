@@ -1,23 +1,14 @@
-import type { ReactNode } from "react";
-import { Header1, Header2, Header3, Header4 } from "@/components/headers";
+import { Header1, Header2, Header3 } from "@/components/headers";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  advancedTour,
-  firstTimeExplorerTour,
-  onsenAndNatureTour,
-  parseTourText,
-  Tour,
-} from "@/data/tours";
+import { parseTourText, Tour, tours } from "@/data/tours";
 import Button from "@/components/button";
 import Contact from "@/components/contact";
 
 function TourCard({
-  tour: { name, imageSrc, imageAlt, price, shortDescription },
-  link,
+  tour: { name, slug, imageSrc, imageAlt, price, shortDescription },
 }: Readonly<{
   tour: Tour;
-  link: string;
 }>) {
   return (
     <article className="h-full flex flex-col rounded-lg bg-white">
@@ -41,7 +32,7 @@ function TourCard({
             ),
           )}
         </p>
-        <Link href={link} className="mt-auto pt-4">
+        <Link href={`/tours/${slug}`} className="mt-auto pt-4">
           <Button>Details</Button>
         </Link>
       </div>
@@ -81,12 +72,9 @@ export default function Home() {
         <section className="w-full">
           <Header1>Explore what we offer</Header1>
           <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 items-stretch">
-            <TourCard
-              tour={firstTimeExplorerTour}
-              link="tours/first-time-explorer"
-            />
-            <TourCard tour={advancedTour} link="tours/advanced-tour" />
-            <TourCard tour={onsenAndNatureTour} link="tours/onsen-and-nature" />
+            {tours.map((tour) => (
+              <TourCard key={tour.slug} tour={tour} />
+            ))}
           </div>
           <div className="flex justify-center mt-12">
             <Link href="/book">

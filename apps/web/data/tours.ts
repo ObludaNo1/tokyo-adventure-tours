@@ -1,4 +1,5 @@
 export interface Tour {
+  slug: string;
   name: string;
   imageSrc: string;
   imageAlt: string;
@@ -12,12 +13,13 @@ export interface Tour {
 }
 
 export const firstTimeExplorerTour: Tour = {
+  slug: "first-time-explorer",
   name: "First time explorer tour",
   imageSrc: "images/meiji_shrine_gate_00-small.webp",
   imageAlt:
     "One of the gates to the Meiji Jingu shrine in the heart of the Tokyo",
   price: "25 000 ¥",
-  duration: "3 to 6 hours",
+  duration: "usually 3 to 6 hours",
   startingTime: "10:00",
   meetPoint: "Asakusa station exit 2",
   additionalInfo: [
@@ -36,6 +38,7 @@ export const firstTimeExplorerTour: Tour = {
 };
 
 export const advancedTour: Tour = {
+  slug: "advanced-tour",
   name: "Advanced tour",
   imageSrc: "images/emperors_palace_00-small.webp",
   imageAlt:
@@ -57,6 +60,7 @@ export const advancedTour: Tour = {
 };
 
 export const onsenAndNatureTour: Tour = {
+  slug: "onsen-and-nature",
   name: "Onsen and nature tour",
   imageSrc: "images/izu_coast_00-small.webp",
   imageAlt:
@@ -84,6 +88,10 @@ export const tours: [Tour, Tour, Tour] = [
   advancedTour,
   onsenAndNatureTour,
 ];
+
+export function getTourBySlug(slug: string): Tour | undefined {
+  return tours.find((tour) => tour.slug === slug);
+}
 
 export type TourDescSegment = {
   readonly text: string;
