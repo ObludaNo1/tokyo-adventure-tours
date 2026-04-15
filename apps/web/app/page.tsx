@@ -18,6 +18,7 @@ function TourCard({
           alt={imageAlt}
           fill
           className="object-cover object-center octagon-clip"
+          priority
         />
       </div>
       <div className="p-4 flex flex-1 flex-col">

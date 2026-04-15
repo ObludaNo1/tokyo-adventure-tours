@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react";
 import { Header1 } from "./headers";
 import Button from "./button";
-import InputField from "./inputField";
+import { InputField } from "./inputField";
 import { validateEmail, validateNonEmpty } from "@/common/validators";
 
 export default function Contact() {
