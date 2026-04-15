@@ -4,8 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import Button from "@/components/button";
-import { Title, Header2 } from "@/components/headers";
-import { getTourBySlug, parseTourText, Tour, tours } from "@/data/tours";
+import { Title } from "@/components/headers";
+import { getTourBySlug, parseTourText, tours } from "@/data/tours";
 
 type TourPageProps = {
   params: Promise<{
@@ -76,45 +76,46 @@ export default async function TourDetailPage({ params }: TourPageProps) {
   return (
     <div className="flex flex-col gap-16">
       <div className="flex items-center">
-        <Title>Explore what we have to offer</Title>
+        <Title>{tour.name}</Title>
       </div>
       <TourSection index={0} imageSrc={tour.imageSrc} imageAlt={tour.imageAlt}>
-        <div>
-          <Header2>{tour.name}</Header2>
-          <p>
-            {tour.duration && (
+        <div className="flex flex-col p-4 text-2xl h-full leading-10">
+          <div className="flex-1">
+            <p>
+              {tour.duration && (
+                <>
+                  <strong>Duration:</strong> {tour.duration}
+                </>
+              )}
+            </p>
+            <p>
+              {tour.startingTime && (
+                <>
+                  <strong>Starting Time:</strong> {tour.startingTime}
+                </>
+              )}
+            </p>
+            <p className="mb-4">
+              {tour.meetPoint && (
+                <>
+                  <strong>Meet Point:</strong> {tour.meetPoint}
+                </>
+              )}
+            </p>
+            {tour.additionalInfo && (
               <>
-                <strong>Duration:</strong> {tour.duration}
+                {tour.additionalInfo.map((info, index) => (
+                  <p key={index}>{info}</p>
+                ))}
               </>
             )}
-          </p>
-          <p>
-            {tour.startingTime && (
-              <>
-                <strong>Starting Time:</strong> {tour.startingTime}
-              </>
-            )}
-          </p>
-          <p>
-            {tour.meetPoint && (
-              <>
-                <strong>Meet Point:</strong> {tour.meetPoint}
-              </>
-            )}
-          </p>
-          {tour.additionalInfo && (
-            <>
-              {tour.additionalInfo.map((info, index) => (
-                <p key={index}>{info}</p>
-              ))}
-            </>
-          )}
-        </div>
-        <div className="flex justify-between items-center">
-          <span className="text-3xl">Price: {tour.price}</span>
-          <Link href="/book">
-            <Button>Book</Button>
-          </Link>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-3xl">Price: {tour.price}</span>
+            <Link href="/book">
+              <Button>Book</Button>
+            </Link>
+          </div>
         </div>
       </TourSection>
       {[0, 1, 2].map((index) => (
@@ -124,26 +125,28 @@ export default async function TourDetailPage({ params }: TourPageProps) {
           imageSrc={tour.imageSrc}
           imageAlt={tour.imageAlt}
         >
-          <p>
-            {parseTourText(tour.fullDescription[index * 2]).map(
-              (part, partIndex) =>
-                part.bold ? (
-                  <strong key={partIndex}>{part.text}</strong>
-                ) : (
-                  <span key={partIndex}>{part.text}</span>
-                ),
-            )}
-          </p>
-          <p>
-            {parseTourText(tour.fullDescription[index * 2 + 1]).map(
-              (part, partIndex) =>
-                part.bold ? (
-                  <strong key={partIndex}>{part.text}</strong>
-                ) : (
-                  <span key={partIndex}>{part.text}</span>
-                ),
-            )}
-          </p>
+          <div className="flex flex-col h-full gap-4 p-4 justify-center text-2xl leading-10">
+            <p>
+              {parseTourText(tour.fullDescription[index * 2]).map(
+                (part, partIndex) =>
+                  part.bold ? (
+                    <strong key={partIndex}>{part.text}</strong>
+                  ) : (
+                    <span key={partIndex}>{part.text}</span>
+                  ),
+              )}
+            </p>
+            <p>
+              {parseTourText(tour.fullDescription[index * 2 + 1]).map(
+                (part, partIndex) =>
+                  part.bold ? (
+                    <strong key={partIndex}>{part.text}</strong>
+                  ) : (
+                    <span key={partIndex}>{part.text}</span>
+                  ),
+              )}
+            </p>
+          </div>
         </TourSection>
       ))}
       <div className="flex justify-center">
