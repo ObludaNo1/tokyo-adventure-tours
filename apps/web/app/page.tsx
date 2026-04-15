@@ -1,4 +1,4 @@
-import { Header1, Header2, Header3 } from "@/components/headers";
+import { Header1, Header1Left, Header2, Header3 } from "@/components/headers";
 import Image from "next/image";
 import Link from "next/link";
 import { parseTourText, Tour, tours } from "@/data/tours";
@@ -69,11 +69,11 @@ export default function Home() {
             />
           </div>
           <div className="px-12 pt-0 pb-24">
-            <Header1>
+            <Header1Left>
               Who
               <br />
               we are
-            </Header1>
+            </Header1Left>
             <p>
               Meet David and Ondřej. We are friends who moved to Japan to
               explore this beautiful country and who are living here in Tokyo.
