@@ -13,7 +13,7 @@ function TourSection({
 }) {
   return (
     <section
-      className={`w-full flex p-4 gap-16 ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
+      className={`w-full flex p-4 gap-24 ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
     >
       <div className="flex flex-1 flex-col gap-4 pb-8">
         <Header2>{name}</Header2>
@@ -47,13 +47,13 @@ function TourSection({
 
 export default function ToursPage() {
   return (
-    <main className="w-full flex flex-1 flex-col p-4 gap-16">
+    <div className="flex flex-col gap-16">
       <div className="flex items-center">
         <Header1>Explore what we have to offer</Header1>
       </div>
       {tours.map((tour, index) => (
         <TourSection key={tour.slug} tour={tour} index={index} />
       ))}
-    </main>
+    </div>
   );
 }

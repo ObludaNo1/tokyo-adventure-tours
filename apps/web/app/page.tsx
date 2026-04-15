@@ -42,57 +42,54 @@ function TourCard({
 
 export default function Home() {
   return (
-    <main className="w-full flex-1">
-      {/* Just a wrapper for padding */}
-      <div className="p-4 flex flex-col gap-16">
-        <section className="w-full">
-          <Header1>Explore what we offer</Header1>
-          <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 items-stretch">
-            {tours.map((tour) => (
-              <TourCard key={tour.slug} tour={tour} />
-            ))}
-          </div>
-          <div className="flex justify-center mt-12">
-            <Link href="/book">
-              <Button size="lg">Book a Tour</Button>
-            </Link>
-          </div>
-        </section>
+    <div className="p-4 flex flex-col gap-16">
+      <section className="w-full">
+        <Header1>Explore what we offer</Header1>
+        <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 items-stretch">
+          {tours.map((tour) => (
+            <TourCard key={tour.slug} tour={tour} />
+          ))}
+        </div>
+        <div className="flex justify-center mt-12">
+          <Link href="/book">
+            <Button size="lg">Book a Tour</Button>
+          </Link>
+        </div>
+      </section>
 
-        <section className="w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-24 mt-8 items-center justify-center">
-            <div className="relative w-full aspect-square overflow-hidden rounded-lg">
-              <Image
-                // TODO Why the fuck when I use the small version of this WebP image the image is rotated???
-                src="/images/about_us_00.webp"
-                alt="David, one of the tour guides, standing at the train station on the Izu peninsula."
-                fill
-                className="object-cover object-center circle-clip"
-              />
-            </div>
-            <div className="px-12 pt-0 pb-24">
-              <Header1>
-                Who
-                <br />
-                we are
-              </Header1>
-              <p>
-                Meet David and Ondřej. We are friends who moved to Japan to
-                explore this beautiful country and who are living here in Tokyo.
-                We love this country and want to share its most gorgeous spots
-                with you.
-              </p>
-              <div className="mt-12">
-                <Link href="/about">
-                  <Button>Learn more</Button>
-                </Link>
-              </div>
+      <section className="w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 mt-8 items-center justify-center">
+          <div className="relative w-full aspect-square overflow-hidden rounded-lg">
+            <Image
+              // TODO Why the fuck when I use the small version of this WebP image the image is rotated???
+              src="/images/about_us_00.webp"
+              alt="David, one of the tour guides, standing at the train station on the Izu peninsula."
+              fill
+              className="object-cover object-center circle-clip"
+            />
+          </div>
+          <div className="px-12 pt-0 pb-24">
+            <Header1>
+              Who
+              <br />
+              we are
+            </Header1>
+            <p>
+              Meet David and Ondřej. We are friends who moved to Japan to
+              explore this beautiful country and who are living here in Tokyo.
+              We love this country and want to share its most gorgeous spots
+              with you.
+            </p>
+            <div className="mt-12">
+              <Link href="/about">
+                <Button>Learn more</Button>
+              </Link>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <Contact />
-      </div>
-    </main>
+      <Contact />
+    </div>
   );
 }

@@ -49,7 +49,7 @@ function TourSection({
 }) {
   return (
     <section
-      className={`w-full flex p-4 gap-16 ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
+      className={`w-full flex p-4 gap-24 ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
     >
       <div className="flex-1">{children}</div>
       <div className="relative flex-1 aspect-[16/10] overflow-hidden">
@@ -74,7 +74,7 @@ export default async function TourDetailPage({ params }: TourPageProps) {
   }
 
   return (
-    <main className="w-full flex flex-1 flex-col p-4 gap-16">
+    <div className="flex flex-col gap-16">
       <div className="flex items-center">
         <Header1>Explore what we have to offer</Header1>
       </div>
@@ -151,6 +151,6 @@ export default async function TourDetailPage({ params }: TourPageProps) {
           <Button size="lg">Book the tour</Button>
         </Link>
       </div>
-    </main>
+    </div>
   );
 }
