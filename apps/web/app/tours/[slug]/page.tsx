@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import Button from "@/components/button";
-import { Header1, Header2 } from "@/components/headers";
+import { Title, Header2 } from "@/components/headers";
 import { getTourBySlug, parseTourText, Tour, tours } from "@/data/tours";
 
 type TourPageProps = {
@@ -76,7 +76,7 @@ export default async function TourDetailPage({ params }: TourPageProps) {
   return (
     <div className="flex flex-col gap-16">
       <div className="flex items-center">
-        <Header1>Explore what we have to offer</Header1>
+        <Title>Explore what we have to offer</Title>
       </div>
       <TourSection index={0} imageSrc={tour.imageSrc} imageAlt={tour.imageAlt}>
         <div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { Header1Left } from "./headers";
+import { Header1 } from "./headers";
 import Button from "./button";
 
 function validateNonEmpty(value: string, fieldName: string): string | null {
@@ -134,7 +134,7 @@ export default function Contact() {
     <section className="w-full">
       <div className="mt-8 grid grid-cols-1 items-start gap-16 lg:grid-cols-2 xl:gap-24">
         <div className="flex flex-col justify-center">
-          <Header1Left>Contact Us</Header1Left>
+          <Header1>Contact Us</Header1>
           <p className="max-w-xl text-lg leading-8">
             Is there anything you would like to ask us? Fill out the form and we
             will be in touch shortly. We can't wait to hear from you.

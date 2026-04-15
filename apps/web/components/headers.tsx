@@ -1,11 +1,11 @@
 import type { ReactNode } from "react";
 
-export function Header1({ children }: { children: ReactNode }) {
+export function Title({ children }: { children: ReactNode }) {
   return <h1 className="w-full text-7xl pt-18 pb-6 text-center">{children}</h1>;
 }
 
-export function Header1Left({ children }: { children: ReactNode }) {
-  return <h1 className="w-full text-7xl pt-18 pb-6">{children}</h1>;
+export function Header1({ children }: { children: ReactNode }) {
+  return <h1 className="text-6xl pt-18 pb-6">{children}</h1>;
 }
 
 export function Header2({ children }: { children: ReactNode }) {

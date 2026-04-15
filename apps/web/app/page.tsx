@@ -1,4 +1,4 @@
-import { Header1, Header1Left, Header2, Header3 } from "@/components/headers";
+import { Title, Header1, Header2, Header3 } from "@/components/headers";
 import Image from "next/image";
 import Link from "next/link";
 import { parseTourText, Tour, tours } from "@/data/tours";
@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <div className="p-4 flex flex-col gap-16">
       <section className="w-full">
-        <Header1>Explore what we offer</Header1>
+        <Title>Explore what we offer</Title>
         <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 items-stretch">
           {tours.map((tour) => (
             <TourCard key={tour.slug} tour={tour} />
@@ -69,11 +69,11 @@ export default function Home() {
             />
           </div>
           <div className="px-12 pt-0 pb-24">
-            <Header1Left>
+            <Header1>
               Who
               <br />
               we are
-            </Header1Left>
+            </Header1>
             <p>
               Meet David and Ondřej. We are friends who moved to Japan to
               explore this beautiful country and who are living here in Tokyo.

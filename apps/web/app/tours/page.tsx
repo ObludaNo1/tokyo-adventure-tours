@@ -1,5 +1,5 @@
 import Button from "@/components/button";
-import { Header1, Header2 } from "@/components/headers";
+import { Title, Header2 } from "@/components/headers";
 import { parseTourText, Tour, tours } from "@/data/tours";
 import Image from "next/image";
 import Link from "next/link";
@@ -49,7 +49,7 @@ export default function ToursPage() {
   return (
     <div className="flex flex-col gap-16">
       <div className="flex items-center">
-        <Header1>Explore what we have to offer</Header1>
+        <Title>Explore what we have to offer</Title>
       </div>
       {tours.map((tour, index) => (
         <TourSection key={tour.slug} tour={tour} index={index} />
