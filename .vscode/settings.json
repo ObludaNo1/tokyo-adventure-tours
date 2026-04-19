@@ -1,5 +1,20 @@
 {
   "rust-analyzer.linkedProjects": [
     "apps/api/Cargo.toml"
+  ],
+  "rust-analyzer.procMacro.enable": true,
+  "rust-analyzer.procMacro.ignored": {
+    "utoipauto": [
+      "utoipauto"
+    ],
+    "utoipauto-macro": [
+      "utoipauto"
+    ],
+    "utoipauto_macro": [
+      "utoipauto"
+    ]
+  },
+  "rust-analyzer.diagnostics.disabled": [
+    "macro-error"
   ]
 }
