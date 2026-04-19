@@ -10,7 +10,7 @@ use tracing::info;
 use crate::{
     env_keys::{SMTP_HOST, SMTP_PASS, SMTP_PORT, SMTP_USER},
     error::AppError,
-    models::contact::ContactRequest,
+    models::contact::ContactInfo,
 };
 
 #[derive(Debug)]
@@ -42,28 +42,33 @@ impl EmailSender {
         Ok(Self { from, to, mailer })
     }
 
-    pub async fn send_contact_email(&self, form: &ContactRequest) -> Result<(), AppError> {
+    pub async fn send_contact_email(&self, form: &ContactInfo) -> Result<(), AppError> {
         let email = Message::builder()
             .from(self.from.parse().map_err(AppError::internal)?)
             .reply_to(
-                form.email
+                form.email()
                     .parse::<Mailbox>()
                     .map_err(|error_value| AppError::validation(error_value.to_string()))?,
             )
             .to(self.to.parse().map_err(AppError::internal)?)
             .subject("New contact form submission")
             .body(format!(
-                "New contact form submission\n\nFrom: {}\n\nMessage:\n{}",
-                form.email, form.message
+                "New contact form submission\n\nFrom:\n{} {}\n{}\n\nMessage:\n{}",
+                form.first_name(),
+                form.last_name(),
+                form.email(),
+                form.message()
             ))
             .map_err(AppError::internal)?;
 
-        info!(recipient = %self.to, reply_to = %form.email, "Sending contact email");
+        info!("Sending contact email");
 
         self.mailer
             .send(email)
             .await
             .map_err(AppError::email_send_failed)?;
+
+        info!("Contact email sent successfully");
 
         Ok(())
     }

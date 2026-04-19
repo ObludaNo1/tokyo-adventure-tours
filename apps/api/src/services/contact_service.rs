@@ -2,7 +2,7 @@ use std::fmt::Debug;
 
 use tracing::info;
 
-use crate::{email::sender::EmailSender, error::AppError, models::contact::ContactRequest};
+use crate::{email::sender::EmailSender, error::AppError, models::contact::ContactInfo};
 
 #[derive(Debug)]
 pub struct ContactService {
@@ -14,12 +14,11 @@ impl ContactService {
         Self { email_sender }
     }
 
-    pub async fn handle_contact(&self, form: ContactRequest) -> Result<(), AppError> {
-        if form.message.trim().is_empty() {
-            return Err(AppError::validation("message: message must not be blank"));
-        }
-
-        info!(email = %form.email, "Dispatching contact email");
+    pub async fn handle_contact(&self, form: ContactInfo) -> Result<(), AppError> {
+        info!(
+            summary = %form.summary(),
+            "Dispatching contact email"
+        );
         self.email_sender.send_contact_email(&form).await?;
         Ok(())
     }

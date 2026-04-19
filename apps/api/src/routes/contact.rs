@@ -1,6 +1,5 @@
 use axum::{Json, Router, extract::State, routing::post};
 use tracing::info;
-use validator::Validate;
 
 use crate::{
     error::AppError,
@@ -25,10 +24,9 @@ pub async fn contact_handler(
     Json(payload): Json<ContactRequest>,
 ) -> Result<Json<ContactResponse>, AppError> {
     info!("Received contact request");
-    info!(email = %payload.email, "Incoming contact");
 
-    payload.validate()?;
-    state.contact_service.handle_contact(payload).await?;
+    let contact_info = payload.try_validate()?;
+    state.contact_service.handle_contact(contact_info).await?;
 
     Ok(Json(ContactResponse))
 }
