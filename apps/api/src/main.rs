@@ -16,6 +16,7 @@ use services::contact_service::ContactService;
 use state::AppState;
 use tokio::net::TcpListener;
 use tracing::{error, info};
+use tracing_subscriber::fmt::format::FmtSpan;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
 #[tokio::main]
@@ -25,7 +26,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             tracing_subscriber::EnvFilter::try_from_default_env()
                 .unwrap_or_else(|_| "api=info,axum=info".into()),
         )
-        .with(tracing_subscriber::fmt::layer())
+        .with(tracing_subscriber::fmt::layer().with_span_events(FmtSpan::NEW | FmtSpan::CLOSE))
         .init();
 
     dotenv().inspect_err(|e| error!(error = %e, "Failed to load .env file"))?;
